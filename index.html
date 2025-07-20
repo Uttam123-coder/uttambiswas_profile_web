@@ -5,533 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uttam Biswas - AI & ML Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .section-white {
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .section-white .section-title {
-            color: #333;
-            text-shadow: none;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-size: 6rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            margin-top: 2rem;
-        }
-
-        .contact-info div {
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Education Section */
-        .education-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .education-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 45%;
-            transition: transform 0.3s ease;
-        }
-
-        .education-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .education-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .education-item:nth-child(even) {
-            left: 55%;
-        }
-
-        .education-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
-
-        .education-item:nth-child(odd)::before {
-            right: -35px;
-        }
-
-        .education-item:nth-child(even)::before {
-            left: -35px;
-        }
-
-        .education-year {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .education-title {
-            font-size: 1.3rem;
-            margin: 0.5rem 0;
-        }
-
-        .education-school {
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-grade {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
-        /* Certifications Section */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .cert-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .cert-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .cert-item h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-provider {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.95);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 2rem;
-                transition: right 0.3s ease;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .education-timeline::before {
-                left: 30px;
-            }
-
-            .education-item {
-                width: calc(100% - 60px);
-                left: 60px !important;
-            }
-
-            .education-item::before {
-                left: -35px !important;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -540,6 +14,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -563,7 +38,12 @@
                 to solve real-world problems in EdTech and automation. Experienced in Python, 
                 Machine Learning, and NLP with a drive to deliver impactful solutions.
             </p>
-            <a href="#about" class="cta-button">Learn More</a>
+            <div class="hero-buttons">
+                <a href="#about" class="cta-button">Learn More</a>
+                <a href="assets/Uttam_Biswas_Resume.pdf" download class="cta-button download-btn">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
         </div>
     </section>
 
@@ -598,12 +78,202 @@
         </div>
     </section>
 
+    <section id="resume" class="section section-white">
+        <div class="bg-pattern-2"></div>
+        <div class="container">
+            <h2 class="section-title fade-in">Resume</h2>
+            <div class="resume-container fade-in">
+                <!-- Professional Summary -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-user-tie"></i> Professional Summary</h3>
+                    <p class="card-content">
+                        Passionate AI Engineering student at Parul University with strong foundation in Python programming, Machine Learning, 
+                        and Natural Language Processing. Experienced in developing AI-powered solutions including Travel Booking Systems 
+                        and News Spam Detection models.
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="resume-item">
+                        <h4>Bachelor of Technology in Computer Science Engineering (AI)</h4>
+                        <p class="resume-meta">Parul Institute of Engineering and Technology | Sep 2021 - Mar 2025</p>
+                        <p>CGPA: 7.22/10</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>12th (BIEAP)</h4>
+                        <p class="resume-meta">Sri Chaitanya Junior College, Visakhapatnam | 2021</p>
+                        <p>CGPA: 8.28/10</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>10th (SSC)</h4>
+                        <p class="resume-meta">D.A.V High School, Visakhapatnam | 2019</p>
+                        <p>CGPA: 9.30/10</p>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                    <div class="resume-skills">
+                        <div class="skill-group">
+                            <h4>Programming Languages</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h4>AI/ML Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Natural Language Processing</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h4>Data Analytics</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Microsoft Power BI</span>
+                                <span class="skill-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h4>Tools & Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">GitHub</span>
+                                <span class="skill-tag">Jupyter Notebook</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Azure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-project-diagram"></i> Projects</h3>
+                    <div class="resume-item">
+                        <h4>Travel Booking System</h4>
+                        <p class="resume-meta">AI-Powered Web Application | Apr 2024 - Mar 2025</p>
+                        <ul class="resume-list">
+                            <li>Developed a comprehensive travel booking system with intelligent backend logic for automated reservation management</li>
+                            <li>Technologies: Python, Backend Development</li>
+                        </ul>
+                    </div>
+                    <div class="resume-item">
+                        <h4>AI-Powered Student Performance Prediction System</h4>
+                        <p class="resume-meta">Python(AI) Development | Jan 2024 - Apr 2024</p>
+                        <ul class="resume-list">
+                            <li>Developed using Python and AI techniques for predicting student performance</li>
+                            <li>Implemented machine learning algorithms for accurate predictions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-briefcase"></i> Experience</h3>
+                    <div class="resume-item">
+                        <h4>AI Developer (Academic Projects)</h4>
+                        <p class="resume-meta">Parul University, Vadodara, Gujarat, India | Apr 2024 - Mar 2025</p>
+                        <ul class="resume-list">
+                            <li>Developed multiple AI-powered applications addressing real-world problems in travel and media industries</li>
+                            <li>Applied machine learning principles to enhance automation and decision-making processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Internships -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-laptop"></i> Internships</h3>
+                    <div class="resume-item">
+                        <h4>AI and Machine Learning Intern</h4>
+                        <p class="resume-meta">The Website Makers, India | Dec 2024 - Mar 2025</p>
+                        <ul class="resume-list">
+                            <li>Successfully completed certified internship program focused on Artificial Intelligence and Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-certificate"></i> Certifications</h3>
+                    <ul class="resume-list">
+                        <li>Tata Group - Data Visualisation: Empowering Business with Effective Insights</li>
+                        <li>Analyzing and Visualizing Data with Microsoft Power BI</li>
+                        <li>30 Days Python Using AI Certificate - Programming Proficiency</li>
+                    </ul>
+                </div>
+
+                <!-- Workshops -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-chalkboard-teacher"></i> Workshops</h3>
+                    <div class="resume-item">
+                        <h4>AI Tools Workshop</h4>
+                        <p class="resume-meta">be10x, Kolkata, West Bengal | Mar 2025</p>
+                        <ul class="resume-list">
+                            <li>Participated in comprehensive workshops on AI tools including ChatGPT, MS Office with AI, and Power BI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="resume-section card">
+                    <h3 class="card-title"><i class="fas fa-info-circle"></i> Additional Information</h3>
+                    <div class="resume-item">
+                        <h4>Areas of Interest</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">EdTech Solutions</span>
+                            <span class="skill-tag">AI in Education</span>
+                            <span class="skill-tag">Intelligent Automation</span>
+                            <span class="skill-tag">Data-Driven Decision Making</span>
+                        </div>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Soft Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Critical Thinking</span>
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Team Collaboration</span>
+                            <span class="skill-tag">Continuous Learning</span>
+                        </div>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">English (Fluent)</span>
+                            <span class="skill-tag">Hindi (Native)</span>
+                            <span class="skill-tag">Telugu (Native)</span>
+                            <span class="skill-tag">Bengali (Native)</span>
+                        </div>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Philosophy</h4>
+                        <p class="card-content">"Live as if you were to die tomorrow. Learn as if you were to live forever."</p>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <div class="resume-actions">
+                    <a href="assets/Uttam_Biswas_Resume.pdf" download class="cta-button download-btn">
+                        <i class="fas fa-download"></i> Download Resume (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="skills" class="section">
+        <div class="bg-pattern-1"></div>
         <div class="container">
             <h2 class="section-title fade-in">Technical Skills</h2>
-            <div class="skills-grid fade-in">
-                <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> AI & Machine Learning</h3>
+            <div class="grid grid-3 fade-in">
+                <div class="skill-category card-hover-glow">
+                    <h3 class="card-title"><i class="fas fa-robot"></i> AI & Machine Learning</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python (with AI)</span>
                         <span class="skill-tag">Machine Learning</span>
@@ -611,8 +281,8 @@
                         <span class="skill-tag">Data Visualization</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming & Development</h3>
+                <div class="skill-category card-hover-glow">
+                    <h3 class="card-title"><i class="fas fa-code"></i> Programming & Development</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">JavaScript</span>
@@ -621,8 +291,8 @@
                         <span class="skill-tag">Bootstrap</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Backend & Database</h3>
+                <div class="skill-category card-hover-glow">
+                    <h3 class="card-title"><i class="fas fa-database"></i> Backend & Database</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Backend Development</span>
                         <span class="skill-tag">DBMS</span>
@@ -661,12 +331,13 @@
     </section>
 
     <section id="projects" class="section">
+        <div class="bg-pattern-2"></div>
         <div class="container">
             <h2 class="section-title fade-in">Projects</h2>
-            <div class="projects-grid fade-in">
-                <div class="project-card">
-                    <h3 class="project-title">Travel Booking System</h3>
-                    <p class="project-description">
+            <div class="grid grid-2 fade-in">
+                <div class="project-card card-hover-scale">
+                    <h3 class="card-title">Travel Booking System</h3>
+                    <p class="card-content">
                         Developed a comprehensive Travel Booking System with robust backend logic 
                         and intuitive user interface for managing reservations. The system handles 
                         booking processes, user management, and reservation tracking efficiently.
@@ -676,13 +347,13 @@
                         <span class="tech-tag">UI/UX</span>
                         <span class="tech-tag">Database Management</span>
                     </div>
-                    <p style="margin-top: 1rem; color: #667eea; font-weight: bold;">
+                    <p class="card-subtitle" style="margin-top: 1rem;">
                         Duration: Apr 2024 – Mar 2025
                     </p>
                 </div>
-                <div class="project-card">
-                    <h3 class="project-title">News Spam Detection</h3>
-                    <p class="project-description">
+                <div class="project-card card-hover-scale">
+                    <h3 class="card-title">News Spam Detection</h3>
+                    <p class="card-content">
                         Built an intelligent News Spam Detection model using Python and Natural Language Processing 
                         to identify misinformation and spam content. Implemented advanced text preprocessing 
                         techniques including tokenization and vectorization for accurate classification.
@@ -699,28 +370,30 @@
     </section>
 
     <section id="certifications" class="section">
+        <div class="bg-pattern-1"></div>
         <div class="container">
             <h2 class="section-title fade-in">Certifications</h2>
-            <div class="cert-grid fade-in">
-                <div class="cert-item">
-                    <h3>Data Visualisation: Empowering Business with Effective Insights</h3>
-                    <p class="cert-provider">Tata Group (Forage) - January 2025</p>
+            <div class="grid grid-3 fade-in">
+                <div class="cert-item card-hover-rotate">
+                    <h3 class="card-title">Data Visualisation</h3>
+                    <p class="card-subtitle">Empowering Business with Effective Insights</p>
+                    <p class="card-content">Tata Group (Forage) - January 2025</p>
                 </div>
-                <div class="cert-item">
-                    <h3>Networking Essentials</h3>
-                    <p class="cert-provider">Certified Professional</p>
+                <div class="cert-item card-hover-rotate">
+                    <h3 class="card-title">Networking Essentials</h3>
+                    <p class="card-content">Certified Professional</p>
                 </div>
-                <div class="cert-item">
-                    <h3>Build Your Own Static Website</h3>
-                    <p class="cert-provider">HTML, CSS, Bootstrap</p>
+                <div class="cert-item card-hover-rotate">
+                    <h3 class="card-title">Static Website Development</h3>
+                    <p class="card-content">HTML, CSS, Bootstrap</p>
                 </div>
-                <div class="cert-item">
-                    <h3>AI for Techies</h3>
-                    <p class="cert-provider">Artificial Intelligence Fundamentals</p>
+                <div class="cert-item card-hover-rotate">
+                    <h3 class="card-title">AI for Techies</h3>
+                    <p class="card-content">Artificial Intelligence Fundamentals</p>
                 </div>
-                <div class="cert-item">
-                    <h3>LinkedIn Using AI</h3>
-                    <p class="cert-provider">Professional Development</p>
+                <div class="cert-item card-hover-rotate">
+                    <h3 class="card-title">LinkedIn Using AI</h3>
+                    <p class="card-content">Professional Development</p>
                 </div>
             </div>
         </div>
@@ -738,86 +411,7 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Typing effect for hero section
-        const heroTitle = document.querySelector('.hero h1');
-        const heroSubtitle = document.querySelector('.hero .subtitle');
-        
-        function typeWriter(element, text, delay = 100) {
-            element.innerHTML = '';
-            let i = 0;
-            const timer = setInterval(() => {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(timer);
-                }
-            }, delay);
-        }
-
-        // Initialize typing effect after page load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                typeWriter(heroTitle, 'Uttam Biswas', 150);
-                setTimeout(() => {
-                    typeWriter(heroSubtitle, 'AI & Machine Learning Developer', 100);
-                }, 2000);
-            }, 500);
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
+</html> 
 </html> 
